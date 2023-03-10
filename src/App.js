@@ -1,23 +1,33 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Menu from './components/Menu';
+import Orders from './components/Orders';
+import Status from './components/Status';
+import data from './data';
 
 function App() {
+  const orders = data.map(orderData => {
+    return (
+      <Orders data={orderData} />
+    )
+  })
+
+  const status = data.map(statusData => {
+    return (
+      <Status data={statusData} />
+    )
+  })
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Menu/>
+      <section>
+          {orders}
+        </section>
+        <section>
+          {status}
+        </section>
+
     </div>
   );
 }
